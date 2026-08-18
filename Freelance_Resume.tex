@@ -1,0 +1,202 @@
+%-------------------------
+% Freelance Resume in LaTeX
+% Based off of: https://github.com/jakegut/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\IfFileExists{fontawesome5.sty}{\usepackage{fontawesome5}}{}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.75in}
+\addtolength{\textheight}{1.4in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-7pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-7pt}]
+
+% Ensure that generated pdf is machine readable / ATS parseable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{#1}
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \hspace{12pt}#2 \\
+      \textit{\small#3} & \hspace{12pt}\textit{\small #4} \\
+    \end{tabular*}\vspace{-8pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-8pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & \hspace{8pt}\small#2 \\
+    \end{tabular*}\vspace{-11pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[nosep, itemsep=0pt]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-7pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\setlength{\parskip}{0pt}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge Prathamesh Vaze} \\ \vspace{2pt}
+    \textit{Full Stack Engineer --- 6+ Years Experience} \\ \vspace{4pt}
+    \small
+    \fontsize{9}{11}\selectfont
+    \href{tel:+919403329930}{\underline{+91 9403329930}} ~$|$~
+    \href{mailto:prathameshvaze@gmail.com}{\underline{prathameshvaze@gmail.com}} ~$|$~
+    \href{https://www.linkedin.com/in/prathameshvaze}{\underline{linkedin.com/in/prathameshvaze}} ~$|$~
+    Available for remote contract work
+\end{center}
+
+%-----------SUMMARY-----------
+\section{Profile}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+      Full stack engineer available for freelance and contract engagements, specializing in responsive, user-friendly web interfaces with HTML5, CSS3, JavaScript, React and Next.js. Track record of delivering payment gateways, CMS-driven websites, and admin panels for clients ranging from Government entities to large enterprises (UPL, Pharma Now). Comfortable owning a project end-to-end: requirements gathering, client communication, frontend architecture, and delivery.
+    }}
+ \end{itemize}
+
+%-----------SERVICES-----------
+\section{Services Offered}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Responsive Web Development}{: pixel-perfect, mobile-first builds with HTML5/CSS3/JS} \\
+     \textbf{Front-End Application Development}{: React \& Next.js single-page and server-rendered apps} \\
+     \textbf{CMS \& Admin Panels}{: Laravel-based CMS, admin dashboards, and content workflows} \\
+     \textbf{Payment Gateway Integration}{: merchant/payment UI integration and QR/UPI-based flows} \\
+     \textbf{API Integration}{: third-party, social, and backend API integration for frontend apps} \\
+    }}
+ \end{itemize}
+
+%-----------CLIENT PROJECTS-----------
+\section{Client Projects}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Healthrageous Made Easy Meals}{Client: US-based (Healthrageous)}
+      {Sr. React Developer}{React JS}
+      \resumeItemListStart
+        \resumeItem{Led frontend development of a platform merging meal delivery with health messaging for Medicare members, ensuring a user-friendly, engaging interface.}
+        \resumeItem{Collaborated directly with the US client on requirements, updates, and usability testing to refine UX.}
+        \resumeItem{Built responsive designs for accessibility across devices; coordinated with backend developers to integrate APIs seamlessly.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {United Phosphorous Ltd (UPL)}{Client: UPL Limited}
+      {Team Lead}{HTML, CSS, Bootstrap, JS, jQuery, PHP (Laravel), MySQL}
+      \resumeItemListStart
+        \resumeItem{Led the frontend development team for OpenAg, UPL's global food-systems initiative, managing tasks and milestone delivery.}
+        \resumeItem{Designed and developed user interfaces and site structure; conducted code reviews for quality and performance.}
+        \resumeItem{Ran client meetings and presentations to gather requirements and report progress.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {SBI Payments}{Client: SBI Payment Services Pvt. Ltd.}
+      {Sr. Front-End Web Developer}{HTML, CSS, Bootstrap, jQuery, PHP (Laravel), MySQL}
+      \resumeItemListStart
+        \resumeItem{Built a mobile-friendly merchant payments website supporting Cards, QR codes, UPI P2M, YONO, and Aadhaar-based (Bhim Aadhaar) payment flows.}
+        \resumeItem{Developed an admin panel for data management and integrated payment gateways to extend merchant solution functionality.}
+        \resumeItem{Implemented a CMS for dynamic data entry and integrated third-party/social APIs; mentored junior developers.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Rebel Foods}{Client: Rebel Foods}
+      {Sr. Front-End Web Developer}{HTML, CSS, Bootstrap, jQuery, PHP (Laravel), MySQL}
+      \resumeItemListStart
+        \resumeItem{Led frontend development of a responsive, SEO-friendly website for the world's largest internet-restaurant chain.}
+        \resumeItem{Developed wireframes and interfaces for a seamless user experience; implemented a CMS for easy content updates.}
+        \resumeItem{Added CSS animations to improve visual appeal and engagement, working closely with designers and backend developers.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%-----------EXPERIENCE-----------
+\section{Full-Time Experience}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+    {12Grids --- The CX Technology Company (Mumbai)}{2019 -- Present}
+    {Software Solution Specialist}{}
+  \resumeSubHeadingListEnd
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {S. H. Kelkar College, Devgad}{2020 -- 2023}
+      {B.Sc. CS, Computer Programming}{}
+    \resumeSubheading
+      {N. S. Pantwalawalkar Junior College, Devgad}{2018 -- 2020}
+      {Higher Secondary School Certificate (HSC)}{}
+  \resumeSubHeadingListEnd
+
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: HTML5, CSS3, SaaS, JavaScript, Handlebars, jQuery, PHP} \\
+     \textbf{Frameworks}{: React, Next.js, Laravel, Bootstrap 5} \\
+     \textbf{Databases \& Tools}{: MySQL, Nginx, MongoDB, Git, GitHub, GitLab, Postman, Figma} \\
+     \textbf{Operating Systems}{: Windows, Linux, macOS} \\
+     \textbf{Domain Experience}{: Services, IT, Payments, E-commerce} \\
+    }}
+ \end{itemize}
+
+%-------------------------------------------
+\end{document}
