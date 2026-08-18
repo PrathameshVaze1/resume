@@ -1,202 +1,277 @@
 %-------------------------
 % Freelance Resume in LaTeX
-% Based off of: https://github.com/jakegut/resume
-% License : MIT
+% Design: modern sans-serif, bold header, bordered skills table,
+%         detailed client-project write-ups
 %------------------------
 
-\documentclass[letterpaper,11pt]{article}
+\documentclass[letterpaper,10.5pt]{article}
 
-\usepackage{latexsym}
-\usepackage[empty]{fullpage}
-\usepackage{titlesec}
-\usepackage{marvosym}
-\usepackage[usenames,dvipsnames]{color}
-\usepackage{verbatim}
-\usepackage{enumitem}
+\usepackage[margin=0.6in]{geometry}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[usenames,dvipsnames]{xcolor}
 \usepackage[hidelinks]{hyperref}
-\usepackage{fancyhdr}
-\usepackage[english]{babel}
+\usepackage{enumitem}
 \usepackage{tabularx}
-
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\IfFileExists{fontawesome5.sty}{\usepackage{fontawesome5}}{}
+\usepackage{array}
+\usepackage{tikz}
+\usepackage{eso-pic}
+\usetikzlibrary{decorations}
 \input{glyphtounicode}
 
-\pagestyle{fancy}
-\fancyhf{}
-\fancyfoot{}
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}
-
-% Adjust margins
-\addtolength{\oddsidemargin}{-0.5in}
-\addtolength{\evensidemargin}{-0.5in}
-\addtolength{\textwidth}{1in}
-\addtolength{\topmargin}{-.75in}
-\addtolength{\textheight}{1.4in}
-
+\pagestyle{empty}
 \urlstyle{same}
-
 \raggedbottom
 \raggedright
-\setlength{\tabcolsep}{0in}
-
-% Sections formatting
-\titleformat{\section}{
-  \vspace{-7pt}\scshape\raggedright\large
-}{}{0em}{}[\color{black}\titlerule \vspace{-7pt}]
-
-% Ensure that generated pdf is machine readable / ATS parseable
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
 \pdfgentounicode=1
+
+\definecolor{inkgray}{HTML}{3C3C3C}
+\definecolor{linegray}{HTML}{BFBFBF}
+\definecolor{deco}{HTML}{D9D9D9}
+
+% Decorative concentric arcs, top-right of every page
+\AddToShipoutPictureBG{%
+  \begin{tikzpicture}[remember picture, overlay]
+    \begin{scope}
+      \clip (current page.north east) rectangle ++(-2.6in,-2.2in);
+      \foreach \r in {0.3,0.42,...,2.6}{
+        \draw[deco, line width=0.4pt] (current page.north east) ++(-0.2in,-0.1in) circle (\r in);
+      }
+    \end{scope}
+  \end{tikzpicture}
+}
 
 %-------------------------
 % Custom commands
-\newcommand{\resumeItem}[1]{
-  \item\small{#1}
+\newcommand{\sectiontitle}[1]{%
+  \vspace{10pt}{\large\bfseries #1}\vspace{5pt}\par
 }
-
-\newcommand{\resumeSubheading}[4]{
-  \vspace{-2pt}\item
-    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
-      \textbf{#1} & \hspace{12pt}#2 \\
-      \textit{\small#3} & \hspace{12pt}\textit{\small #4} \\
-    \end{tabular*}\vspace{-8pt}
+\newcommand{\subdate}[1]{{\bfseries #1}\par\vspace{2pt}}
+\newcommand{\projLabel}[2]{%
+  \vspace{9pt}{\small\bfseries\color{inkgray} Project #1: -- }{\bfseries #2}\par\vspace{4pt}
 }
-
-\newcommand{\resumeSubSubheading}[2]{
-    \item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-      \textit{\small#1} & \textit{\small #2} \\
-    \end{tabular*}\vspace{-8pt}
-}
-
-\newcommand{\resumeProjectHeading}[2]{
-    \item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-      \small#1 & \hspace{8pt}\small#2 \\
-    \end{tabular*}\vspace{-11pt}
-}
-
-\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
-
-\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
-
-\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
-\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-\newcommand{\resumeItemListStart}{\begin{itemize}[nosep, itemsep=0pt]}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-7pt}}
+\newcommand{\fieldLabel}[1]{{\bfseries #1}\par}
+\newcommand{\resumeItemListStart}{\begin{itemize}[nosep, itemsep=3pt, leftmargin=0.2in]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{2pt}}
 
 %-------------------------------------------
-%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \begin{document}
-\setlength{\parskip}{0pt}
 
 %----------HEADING----------
-\begin{center}
-    \textbf{\Huge Prathamesh Vaze} \\ \vspace{2pt}
-    \textit{Full Stack Engineer --- 6+ Years Experience} \\ \vspace{4pt}
-    \small
-    \fontsize{9}{11}\selectfont
-    \href{tel:+919403329930}{\underline{+91 9403329930}} ~$|$~
-    \href{mailto:prathameshvaze@gmail.com}{\underline{prathameshvaze@gmail.com}} ~$|$~
-    \href{https://www.linkedin.com/in/prathameshvaze}{\underline{linkedin.com/in/prathameshvaze}} ~$|$~
-    Available for remote contract work
-\end{center}
+\begin{minipage}[t]{0.62\textwidth}
+  {\fontsize{34}{34}\selectfont\bfseries PRATHAMESH}\\[-2pt]
+  {\fontsize{34}{34}\selectfont\bfseries VAZE}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.36\textwidth}
+  \vspace{6pt}
+  \raggedleft
+  \small
+  M: \href{tel:+919403329930}{+91 9403329930}\\[2pt]
+  E: \href{mailto:prathameshvaze@gmail.com}{\underline{prathameshvaze@gmail.com}}\\[2pt]
+  L: \href{https://www.linkedin.com/in/prathameshvaze/}{\underline{linkedin.com/in/prathameshvaze}}
+\end{minipage}
+
+\vspace{8pt}
+{\color{linegray}\hrule height 0.6pt}
+\vspace{6pt}
+\small 6+ Years of Experience
+\vspace{4pt}
+\par
+{\color{linegray}\hrule height 0.6pt}
 
 %-----------SUMMARY-----------
-\section{Profile}
- \begin{itemize}[leftmargin=0.15in, label={}]
-    \small{\item{
-      Full stack engineer available for freelance and contract engagements, specializing in responsive, user-friendly web interfaces with HTML5, CSS3, JavaScript, React and Next.js. Track record of delivering payment gateways, CMS-driven websites, and admin panels for clients ranging from Government entities to large enterprises (UPL, Pharma Now). Comfortable owning a project end-to-end: requirements gathering, client communication, frontend architecture, and delivery.
-    }}
- \end{itemize}
-
-%-----------SERVICES-----------
-\section{Services Offered}
- \begin{itemize}[leftmargin=0.15in, label={}]
-    \small{\item{
-     \textbf{Responsive Web Development}{: pixel-perfect, mobile-first builds with HTML5/CSS3/JS} \\
-     \textbf{Front-End Application Development}{: React \& Next.js single-page and server-rendered apps} \\
-     \textbf{CMS \& Admin Panels}{: Laravel-based CMS, admin dashboards, and content workflows} \\
-     \textbf{Payment Gateway Integration}{: merchant/payment UI integration and QR/UPI-based flows} \\
-     \textbf{API Integration}{: third-party, social, and backend API integration for frontend apps} \\
-    }}
- \end{itemize}
-
-%-----------CLIENT PROJECTS-----------
-\section{Client Projects}
-  \resumeSubHeadingListStart
-
-    \resumeSubheading
-      {Healthrageous Made Easy Meals}{Client: US-based (Healthrageous)}
-      {Sr. React Developer}{React JS}
-      \resumeItemListStart
-        \resumeItem{Led frontend development of a platform merging meal delivery with health messaging for Medicare members, ensuring a user-friendly, engaging interface.}
-        \resumeItem{Collaborated directly with the US client on requirements, updates, and usability testing to refine UX.}
-        \resumeItem{Built responsive designs for accessibility across devices; coordinated with backend developers to integrate APIs seamlessly.}
-      \resumeItemListEnd
-
-    \resumeSubheading
-      {United Phosphorous Ltd (UPL)}{Client: UPL Limited}
-      {Team Lead}{HTML, CSS, Bootstrap, JS, jQuery, PHP (Laravel), MySQL}
-      \resumeItemListStart
-        \resumeItem{Led the frontend development team for OpenAg, UPL's global food-systems initiative, managing tasks and milestone delivery.}
-        \resumeItem{Designed and developed user interfaces and site structure; conducted code reviews for quality and performance.}
-        \resumeItem{Ran client meetings and presentations to gather requirements and report progress.}
-      \resumeItemListEnd
-
-    \resumeSubheading
-      {SBI Payments}{Client: SBI Payment Services Pvt. Ltd.}
-      {Sr. Front-End Web Developer}{HTML, CSS, Bootstrap, jQuery, PHP (Laravel), MySQL}
-      \resumeItemListStart
-        \resumeItem{Built a mobile-friendly merchant payments website supporting Cards, QR codes, UPI P2M, YONO, and Aadhaar-based (Bhim Aadhaar) payment flows.}
-        \resumeItem{Developed an admin panel for data management and integrated payment gateways to extend merchant solution functionality.}
-        \resumeItem{Implemented a CMS for dynamic data entry and integrated third-party/social APIs; mentored junior developers.}
-      \resumeItemListEnd
-
-    \resumeSubheading
-      {Rebel Foods}{Client: Rebel Foods}
-      {Sr. Front-End Web Developer}{HTML, CSS, Bootstrap, jQuery, PHP (Laravel), MySQL}
-      \resumeItemListStart
-        \resumeItem{Led frontend development of a responsive, SEO-friendly website for the world's largest internet-restaurant chain.}
-        \resumeItem{Developed wireframes and interfaces for a seamless user experience; implemented a CMS for easy content updates.}
-        \resumeItem{Added CSS animations to improve visual appeal and engagement, working closely with designers and backend developers.}
-      \resumeItemListEnd
-
-  \resumeSubHeadingListEnd
+\sectiontitle{PROFESSIONAL SUMMARY}
+\small
+Full stack engineer with 6+ years of experience designing and building responsive, user-friendly web interfaces. Specializing in HTML5, CSS3, JavaScript, React, Next.js, and Laravel, with a proven track record of delivering payment gateways, CMS-driven websites, and admin panels for clients ranging from Government entities to large enterprises (UPL, SBI, Rebel Foods). Comfortable owning a project end-to-end: requirements gathering, client communication, frontend architecture, and delivery. Currently a full-time PHP-Laravel Developer at Rapsys Tech Solutions, available for freelance and contract engagements alongside full-time work.
 
 %-----------EXPERIENCE-----------
-\section{Full-Time Experience}
-  \resumeSubHeadingListStart
-    \resumeSubheading
-    {12Grids --- The CX Technology Company (Mumbai)}{2019 -- Present}
-    {Software Solution Specialist}{}
-  \resumeSubHeadingListEnd
+\sectiontitle{PROFESSIONAL EXPERIENCE}
+
+\subdate{Oct 2025 -- Present}
+\small PHP-Laravel Developer\par
+\small Rapsys Tech Solutions Pvt Ltd
+\vspace{8pt}
+
+\subdate{Mar 2022 -- Sept 2025}
+\small Software Engineer Innovator\par
+\small 12Grids -- The CX Technology Company (Mumbai)
 
 %-----------EDUCATION-----------
-\section{Education}
-  \resumeSubHeadingListStart
-    \resumeSubheading
-      {S. H. Kelkar College, Devgad}{2020 -- 2023}
-      {B.Sc. CS, Computer Programming}{}
-    \resumeSubheading
-      {N. S. Pantwalawalkar Junior College, Devgad}{2018 -- 2020}
-      {Higher Secondary School Certificate (HSC)}{}
-  \resumeSubHeadingListEnd
+\sectiontitle{EDUCATIONAL QUALIFICATIONS}
 
-%-----------TECHNICAL SKILLS-----------
-\section{Technical Skills}
- \begin{itemize}[leftmargin=0.15in, label={}]
-    \small{\item{
-     \textbf{Languages}{: HTML5, CSS3, SaaS, JavaScript, Handlebars, jQuery, PHP} \\
-     \textbf{Frameworks}{: React, Next.js, Laravel, Bootstrap 5} \\
-     \textbf{Databases \& Tools}{: MySQL, Nginx, MongoDB, Git, GitHub, GitLab, Postman, Figma} \\
-     \textbf{Operating Systems}{: Windows, Linux, macOS} \\
-     \textbf{Domain Experience}{: Services, IT, Payments, E-commerce} \\
-    }}
- \end{itemize}
+\small B.Sc. Computer Science\par
+\small S. R. M. College, Kudal \hspace{4pt} \textbullet\hspace{4pt} CGPA: 9.83
+\vspace{8pt}
 
-%-------------------------------------------
+\small Higher Secondary Certificate (HSC)\par
+\small N. A. D. Topiwalla Jr. College \hspace{4pt} \textbullet\hspace{4pt} 64\%
+\vspace{8pt}
+
+\small Secondary School Certificate (SSC)\par
+\small A. S. D. Topiwalla High School \hspace{4pt} \textbullet\hspace{4pt} 78.6\%
+
+%-----------SKILLSET-----------
+\sectiontitle{SKILLSET}
+\small
+\renewcommand{\arraystretch}{1.5}
+\begin{tabularx}{\textwidth}{|p{0.24\textwidth}|X|}
+\hline
+Languages & \textbf{HTML5, CSS3, SaaS, JavaScript, Handlebars, jQuery, PHP} \\
+\hline
+Frameworks & \textbf{React, Next.js, Laravel, Bootstrap 5} \\
+\hline
+Databases \& Tools & \textbf{MySQL, Nginx, MongoDB, Git, GitHub, GitLab, Postman, Figma} \\
+\hline
+Operating Systems & \textbf{Windows, Linux, macOS} \\
+\hline
+Domain Experience & \textbf{Services, IT, Payments, E-commerce} \\
+\hline
+\end{tabularx}
+
+%-----------TECHNOLOGIES-----------
+\sectiontitle{TECHNOLOGIES}
+\small
+\begin{tabularx}{\textwidth}{XXX}
+\textbullet\ Next.js & \textbullet\ JavaScript & \textbullet\ HTML5 \\[4pt]
+\textbullet\ React JS & \textbullet\ CSS3 & \textbullet\ PHP \\[4pt]
+\textbullet\ Bootstrap 5.0 & \textbullet\ Laravel & \textbullet\ MySQL \\
+\end{tabularx}
+
+%-----------SERVICES-----------
+\begin{minipage}{\textwidth}
+\sectiontitle{SERVICES OFFERED}
+\small
+\begin{tabularx}{\textwidth}{@{}p{0.3\textwidth}X@{}}
+\textbf{Responsive Web Development} & pixel-perfect, mobile-first builds with HTML5/CSS3/JS \\[6pt]
+\textbf{Front-End Application Development} & React \& Next.js single-page and server-rendered apps \\[6pt]
+\textbf{CMS \& Admin Panels} & Laravel-based CMS, admin dashboards, and content workflows \\[6pt]
+\textbf{Payment Gateway Integration} & merchant/payment UI integration and QR/UPI-based flows \\[6pt]
+\textbf{API Integration} & third-party, social, and backend API integration for frontend apps \\
+\end{tabularx}
+\end{minipage}
+
+\clearpage
+
+%-----------CLIENT PROJECTS-----------
+\sectiontitle{CLIENT PROJECTS}
+
+\projLabel{1}{Healthrageous}
+\fieldLabel{Description:}
+\small
+Healthrageous is a US-based client project promoting health and wellness through a dynamic, engaging platform that merges meal delivery with health messaging for Medicare members. Healthrageous Made Easy Meals offers convenient, delicious, and healthy meal options aimed at making healthy living accessible. Prathamesh led the project from the frontend, managing client communication and demonstrating strong ownership.
+\vspace{6pt}
+
+\fieldLabel{Client:}
+\small Healthrageous Made Easy Meals
+\vspace{6pt}
+
+\fieldLabel{Technologies:}
+\small React JS
+\vspace{6pt}
+
+\fieldLabel{Role:}
+\small Sr. React Developer
+\vspace{6pt}
+
+\fieldLabel{Responsibilities:}
+\resumeItemListStart
+  \small\item Led the frontend development, ensuring a user-friendly and engaging interface.
+  \small\item Collaborated closely with the US client to understand and implement requirements.
+  \small\item Developed responsive designs to ensure accessibility across various devices.
+  \small\item Managed client communication, providing regular updates and gathering feedback.
+  \small\item Implemented frontend solutions using HTML5, CSS3, JavaScript, and React JS.
+  \small\item Coordinated with backend developers to integrate APIs seamlessly.
+  \small\item Conducted usability testing to refine the user experience.
+\resumeItemListEnd
+
+\projLabel{2}{United Phosphorous Ltd (UPL)}
+\fieldLabel{Description:}
+\small
+United Phosphorous Limited (UPL) is a leader in global food systems, reshaping the industry with OpenAg, driving sustainable growth for all. Prathamesh was the team lead driving the frontend of the project.
+\vspace{6pt}
+
+\fieldLabel{Client:}
+\small UPL Limited
+\vspace{6pt}
+
+\fieldLabel{Technologies:}
+\small HTML, CSS, Bootstrap, JS, jQuery, PHP (Laravel Framework), MySQL DB.
+\vspace{6pt}
+
+\fieldLabel{Role:}
+\small Team Lead
+\vspace{6pt}
+
+\fieldLabel{Responsibilities:}
+\resumeItemListStart
+  \small\item Led the frontend development team, managing tasks and ensuring timely delivery of project milestones.
+  \small\item Designed and developed user interfaces and site structures.
+  \small\item Conducted code reviews to maintain high standards of code quality and performance.
+  \small\item Managed client meetings and presentations to gather requirements and provide progress updates.
+  \small\item Enhanced user experience through responsive design techniques.
+  \small\item Structured the site for optimal navigation and usability.
+  \small\item Integrated third-party website, social media, and application APIs.
+  \small\item Implemented a CMS for dynamic data entry.
+  \small\item Utilized CSS animations to improve visual engagement.
+  \small\item Mentored junior developers, fostering a collaborative and productive team environment.
+  \small\item Coordinated with cross-functional teams to ensure seamless integration of frontend and backend functionalities.
+\resumeItemListEnd
+
+\projLabel{3}{SBI Payments}
+\fieldLabel{Description:}
+\small
+SBI Payments Services provides solutions to merchants for facilitating merchant payments for goods and services through various form factors like Cards, QR Codes, App-based solutions (UPI P2M, YONO Sale \& Cash), and Aadhaar-based solutions (Bhim Aadhaar SBI).
+\vspace{6pt}
+
+\fieldLabel{Client:}
+\small SBI Payment Services Pvt. Ltd.
+\vspace{6pt}
+
+\fieldLabel{Technologies:}
+\small HTML, CSS, Bootstrap, jQuery, PHP (Laravel Framework), MySQL.
+\vspace{6pt}
+
+\fieldLabel{Role:}
+\small Sr. Front-End Web Developer
+\vspace{6pt}
+
+\fieldLabel{Responsibilities:}
+\resumeItemListStart
+  \small\item Developed a mobile-friendly website which gives a better user experience.
+  \small\item Developed an admin panel for data management.
+  \small\item Integrated payment gateways to enhance the functionality of merchant solutions.
+  \small\item Implemented a CMS for dynamic data entry and integrated third-party/social APIs.
+  \small\item Implemented responsive design techniques to improve user experience.
+  \small\item Mentored junior developers.
+\resumeItemListEnd
+
+\projLabel{4}{Rebel Foods}
+\fieldLabel{Description:}
+\small
+Rebel Foods is the world's largest chain of internet restaurants, powered by an operating system for building and scaling brands globally. The project involved creating a responsive, SEO-friendly website to enhance their online presence and user engagement. Prathamesh led the frontend development effort, focusing on delivering a high-performance and visually appealing web experience, working closely with designers and backend developers to ensure seamless integration and optimal functionality.
+\vspace{6pt}
+
+\fieldLabel{Client:}
+\small Rebel Foods
+\vspace{6pt}
+
+\fieldLabel{Technologies:}
+\small HTML, CSS, Bootstrap, jQuery, PHP (Laravel Framework), MySQL.
+\vspace{6pt}
+
+\fieldLabel{Role:}
+\small Sr. Front-End Web Developer
+\vspace{6pt}
+
+\fieldLabel{Responsibilities:}
+\resumeItemListStart
+  \small\item Developed wireframes and user interfaces for a seamless user experience.
+  \small\item Ensured responsive design and development for the website, enhancing accessibility across various devices.
+  \small\item Implemented a CMS for efficient content management, allowing easy updates and modifications.
+  \small\item Added CSS animations to enhance visual appeal and user engagement.
+\resumeItemListEnd
+
 \end{document}
